@@ -1,4 +1,4 @@
-# Web Scrapping using Ruby
+# Web Scraping using Ruby
 
 ## Project Description
 This project implements web scrapping in [freethink.com](https://www.freethink.com/) and retrieves data from it as an array. Project completely uses Ruby as the programming language.

@@ -1,31 +1,29 @@
-require 'watir'
-require 'webdrivers'
+# Alpha code for the same implementation of the scraper.rb
 require 'nokogiri'
+require 'open-uri'
 require 'json'
 
-browser = Watir::Browser.new
-browser.goto 'https://www.freethink.com/articles'
-parsed_page = Nokogiri::HTML(browser.html)
+url = 'https://www.freethink.com/articles'
+uri = URI.open(url)
+response = Nokogiri::HTML(uri)
 
-article_cards = parsed_page.xpath("//*[@id='primary']/div/div/div/div/div/div")
+doc = response.css('a.block.mb-4')
+title = doc.map { |title| title.text }
+img_link = response.css('img.w-full.h-auto').map { |img| img['src'] }
+news_link = doc.map { |link| link['href'] }
 
-output = []
+result = []
 
-article_cards.each do |card|
-    title = card.xpath("div[2]/a")
-    img_link = card.xpath("div/a/img/@src")
-    news_link = card.xpath("div[1]/a/@href")
-    output.push({
-        'title': title.text,
-        'image_link': img_link.text,
-        'news_page_link': news_link.text
+for i in 0..doc.length-1 do
+    result.push({
+        'title': title[i],
+        'image_link': img_link[i],
+        'news_page_link': news_link[i]
     })
 end
 
-data = JSON.pretty_generate(output)
+data = JSON.pretty_generate(result)
 
-File.open('data.json', 'w') do |f|
+File.open('dataAlpha.json', 'w') do |f|
     f.write(data)
 end
-
-browser.close

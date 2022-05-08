@@ -1,45 +1,46 @@
 # Web Scrapping using Ruby
 
 ## Project Description
-Scrap web data from [freethink.com](https://www.freethink.com/) and extract the data into a file.
+This project implements web scrapping in [freethink.com](https://www.freethink.com/) and retrieves data from it as an array. Project completely uses Ruby as the programming language.
 
-## How to run the project
+## Pre-requisites
 To build our Ruby web scraper, we need first to make sure that we have all the prerequisites:
 
-1. The latest stable version of Ruby: check out their official installation guide to choose the best method for your operating system.
-2. An IDE: you can choose any IDE you prefer, I used Visual Studio Code for the whole project.
-3. Bundler: a dependency management Ruby tool (also called a gem).
-4. Watir: a Selenium powered gem used for automatic testing, as it can imitate user's behavior on a browser.
-5. Webdrivers: a gem recommended by Watir that will automatically download the latest driver for a browser instance;
-6. Nokogiri: a gem well-known for the ability to make web pages analysis easy. It can parse HTML, XML, detects broken HTML documents, and offers access to elements by XPath and CSS3 selectors.
+- The latest stable version of **Ruby**: check out their official installation guide to choose the best method for your operating system.
+- An IDE : you can choose any IDE you prefer, I used **Visual Studio Code** for the whole project (If you plan to edit or work the code).
+- **Nokogiri** : a gem well-known for the ability to make web pages analysis easy. It can parse HTML, XML, detects broken HTML documents, and offers access to elements by XPath and CSS3 selectors.
+- __open-uri__ : a gem used to open web pages.
+- __json__ : a gem used to parse JSON files.
 
-After setting up the Ruby environment, clone this repository anywhere on your computer and open it with your IDE of choice. Then run the following command in a terminal window to install our first gem:
+## Steps to install the pre-requisites.
+-	Ruby: Install ruby from the official website ruby-lang.org.  
+We have several tools on each major platform to install Ruby:
+    1.	On **Linux/UNIX**, you can use the package management system of your distribution or third-party tools (rbenv and RVM).
+    2.	On **macOS** machines, you can use third-party tools (rbenv and RVM).
+    3.	On **Windows** machines, you can use Ruby Installer.
+-	Gem: Next step is to install the dependencies of the project. Dependencies are called as Gem in the ruby language. We must install the following gems for the working of this project.  
+To install the gems nokogiri, open-uri and json, we can use the following command:
+    ```
+    gem install nokogiri open-uri json
+    ```
 
-```
-gem install bundler
-```
+For more details about the gem, go to [rubygems.org](https://rubygems.org/).
 
-Now create a file called Gemfile in your project root directory. Here we are going to add the rest of the gems as dependencies:
+## How to run the project
+After completing the above steps in setting up the Ruby environment, clone this repository anywhere on your computer and open it with your IDE of choice or terminal(depending on the OS). 
 
-```
-source 'https://rubygems.org'
-
-gem 'watir', '~> 6.19', '>= 6.19.1'
-gem 'webdrivers', '~> 4.6'
-gem 'nokogiri', '~> 1.11', '>= 1.11.7'
-```
-
-Now get back to the terminal window and run the following command to install the gems we declared:
-
-```
-bundle install
-```
-
-Cool setup! Finally, just create a “scraper.rb” file to hold our web scraper’s code. Whatever we write here, we can execute with the command:
+We can execute this webScrapper with the following command:
 
 ```
 ruby scraper.rb
 ```
+This will successfully create a file called 'data.json' in the current directory which contains the required result.
+
+### Alternative method:
+Open up the project directory and double click the scraper.rb file. This will open up a window which will create a file called 'data.json' in the current directory.
 
 ## Reference
-[Web Scraping in Ruby: The Ultimate Tutorial](https://www.webscrapingapi.com/ruby-web-scraping/)
++ [Web Scraping in Ruby: The Ultimate Tutorial](https://www.webscrapingapi.com/ruby-web-scraping/)
++ [Ruby Web Scraping Using Nokogiri](https://blog.devgenius.io/ruby-web-scraping-using-nokogiri-54a116e64471)
++ [Basic Ruby Web Scraping with Nokogiri](darrenlester.com/blog/basic-ruby-web-scraping-with-nokogiri)
++ [Web Scraping with Ruby](https://www.scrapingbee.com/blog/web-scraping-ruby/)
